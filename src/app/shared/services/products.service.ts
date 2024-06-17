@@ -10,11 +10,19 @@ export class ProductsService {
 
   httpClient = inject(HttpClient);
 
+  get(id: string) {
+    return this.httpClient.get<Product>('/api/products/' + id);
+  }
+
   getAll() {
     return this.httpClient.get<Product[]>('/api/products');
   }
   
   post(payload: ProductPayload) {
     return this.httpClient.post('/api/products', payload);
+  }
+
+  put(payload: ProductPayload, id: string) {
+    return this.httpClient.post('/api/products/' + id, payload);
   }
 }
