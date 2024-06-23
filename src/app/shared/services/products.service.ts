@@ -11,7 +11,7 @@ export class ProductsService {
   httpClient = inject(HttpClient);
 
   get(id: string) {
-    return this.httpClient.get<Product>('/api/products/' + id);
+    return this.httpClient.get<Product>(`/api/products/${id}`);
   }
 
   getAll() {
@@ -23,6 +23,6 @@ export class ProductsService {
   }
 
   put(payload: ProductPayload, id: string) {
-    return this.httpClient.post('/api/products/' + id, payload);
+    return this.httpClient.post(`/api/products/${id}`, payload);
   }
 }
