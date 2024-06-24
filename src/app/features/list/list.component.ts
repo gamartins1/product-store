@@ -4,6 +4,8 @@ import { Product } from '../../shared/interfaces/product.interface';
 import { CardComponent } from './components/card/card.component';
 import { Router, RouterLink } from '@angular/router';
 import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-list',
@@ -17,6 +19,7 @@ export class ListComponent {
 
   productsService = inject(ProductsService);
   router = inject(Router);
+  matDialog = inject(MatDialog);
 
   ngOnInit() {
     this.productsService.getAll().subscribe((products) => {
@@ -26,5 +29,11 @@ export class ListComponent {
 
   onEdit(product: Product) {
     this.router.navigate(['/edit-product', product.id]);
+  }
+
+  onDelete(product: Product) {
+    this.matDialog.open(ConfirmDialogComponent).afterClosed().subscribe((message) => {
+      
+    });
   }
 }
