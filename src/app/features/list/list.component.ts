@@ -7,6 +7,7 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 import { filter } from 'rxjs';
+import { ConfirmationDialogService } from '../../shared/services/confirmation-dialog.service';
 
 @Component({
   selector: 'app-list',
@@ -21,6 +22,7 @@ export class ListComponent {
   productsService = inject(ProductsService);
   router = inject(Router);
   matDialog = inject(MatDialog);
+  confirmationDialogService = inject(ConfirmationDialogService)
 
   ngOnInit() {
     this.productsService.getAll().subscribe((products) => {
@@ -33,9 +35,8 @@ export class ListComponent {
   }
 
   onDelete(product: Product) {
-    this.matDialog.open(ConfirmDialogComponent)
-      .afterClosed()
-      .pipe(filter((answer) => answer === true))
+    this.confirmationDialogService.openDialog()
+      .pipe(filter(answer => answer === true))
       .subscribe((answer: boolean) => {
           this.productsService.delete(product.id).subscribe(() => {
             this.productsService.getAll().subscribe((products) => {
