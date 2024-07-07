@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -32,8 +33,15 @@ export class ListComponent {
   }
 
   onDelete(product: Product) {
-    this.matDialog.open(ConfirmDialogComponent).afterClosed().subscribe((message) => {
-      
-    });
+    this.matDialog.open(ConfirmDialogComponent)
+      .afterClosed()
+      .pipe(filter((answer) => answer === true))
+      .subscribe((answer: boolean) => {
+          this.productsService.delete(product.id).subscribe(() => {
+            this.productsService.getAll().subscribe((products) => {
+              this.products = products;
+            })
+          });
+      });
   }
 }

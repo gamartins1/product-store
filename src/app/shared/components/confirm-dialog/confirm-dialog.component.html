@@ -3,6 +3,6 @@
   Gostaria realmente de deletar o produto?
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close cdkFocusInitial>Não</button>
-  <button mat-button mat-dialog-close>Sim</button>
+  <button mat-raised-button cdkFocusInitial (click)="onNo()">Não</button>
+  <button mat-button (click)="onYes()">Sim</button>
 </mat-dialog-actions>

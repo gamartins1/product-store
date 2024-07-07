@@ -11,5 +11,14 @@ import { MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent, Mat
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmDialogComponent {
-  readonly dialogRef = inject(MatDialogRef<ConfirmDialogComponent>);
+  dialogRef = inject(MatDialogRef<ConfirmDialogComponent>);
+
+
+  onNo() {
+    this.dialogRef.close(false);
+  }
+
+  onYes() {
+    this.dialogRef.close(true);
+  }
 }
