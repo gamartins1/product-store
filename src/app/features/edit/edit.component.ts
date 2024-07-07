@@ -16,7 +16,7 @@ export class EditComponent {
   productsService = inject(ProductsService);
   matSnackBar = inject(MatSnackBar);
   router = inject(Router);
-  product: Product = inject(ActivatedRoute).snapshot.data['product'];
+  product: Product = inject(ActivatedRoute).snapshot.data['getProduct'];
 
   onSubmit(product: Product) {
     
