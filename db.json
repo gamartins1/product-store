@@ -1,28 +1,8 @@
 {
   "products": [
     {
-      "id": "e604",
-      "title": "Tênis"
-    },
-    {
-      "id": "55e7",
-      "title": "Caixa"
-    },
-    {
-      "id": "f528",
-      "title": "Pão"
-    },
-    {
-      "id": "9ecd",
-      "title": "Mel"
-    },
-    {
-      "id": "5832",
-      "title": "Carne"
-    },
-    {
-      "title": "Chocolate KitKat",
-      "id": "2015"
+      "id": "3a58",
+      "title": "Batata"
     }
   ]
 }
